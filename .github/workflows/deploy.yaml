@@ -24,9 +24,9 @@ jobs:
       packages: write
       id-token: write
     env:
-      IMAGE-CLIENT: ghcr.io/dcottr42/many-containers/client:${{ github.sha }}
+      IMAGE_CLIENT: ghcr.io/dcottr42/many-containers/client:${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
       - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      - run: docker build -t $IMAGE-CLIENT ./client
-      - run: docker push $IMAGE-CLIENT
+      - run: docker build -t $IMAGE_CLIENT ./client
+      - run: docker push $IMAGE_CLIENT
