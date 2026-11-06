@@ -1,0 +1,14 @@
+node_modules/
+build/
+coverage/
+npm-debug.log*
+
+.env
+.env.*
+
+.DS_Store
+
+# Claude
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/.cc-writes/
