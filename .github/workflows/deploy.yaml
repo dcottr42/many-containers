@@ -19,14 +19,17 @@ jobs:
     needs: test-client
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [client, nginx, server, worker]
     permissions:
       contents: read
       packages: write
       id-token: write
     env:
-      IMAGE_CLIENT: ghcr.io/dcottr42/many-containers/client:${{ github.sha }}
+      IMAGE: ghcr.io/dcottr42/many-containers/${{ matrix.service }}:${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
       - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      - run: docker build -t $IMAGE_CLIENT ./client
-      - run: docker push $IMAGE_CLIENT
+      - run: docker build -t $IMAGE ./${{ matrix.service }}
+      - run: docker push $IMAGE
