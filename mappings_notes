@@ -1,0 +1,6 @@
+REDIS_HOST: redis-instance.polandcentral.redis.azure.net
+REDIS_PORT: 10000
+PGHOST: fib-main-pg.postgres.database.azure.com
+PGPASSWORD: seeeecret
+PGDATABASE: postgres
+PGPORT: 5432
