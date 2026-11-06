@@ -10,6 +10,9 @@ services:
       context: ./nginx
     ports:
       - '3050:80'
+    environment:
+      - CLIENT_PORT=3000
+      - API_PORT=5000
   postgres:
     image: "postgres:latest"
     environment:
